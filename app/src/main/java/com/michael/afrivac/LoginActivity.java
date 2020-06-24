@@ -2,6 +2,7 @@ package com.michael.afrivac;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -15,6 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.github.aakira.compoundicontextview.CompoundIconTextView;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -60,7 +62,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         forgotPassword = findViewById(R.id.signin_forgot_password);
 
 
-
         final String Email = email.getText().toString().trim();
         final String Password = password.getText().toString().trim();
 
@@ -83,7 +84,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 sign_in.startAnimation(animation);
                 animation.setAnimationListener(new Animation.AnimationListener() {
                     @Override
-                    public void onAnimationStart(Animation animation) {}
+                    public void onAnimationStart(Animation animation) {
+                    }
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
@@ -91,7 +93,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
 
                     @Override
-                    public void onAnimationRepeat(Animation animation) {}
+                    public void onAnimationRepeat(Animation animation) {
+                    }
                 });
             }
         });
@@ -103,7 +106,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 googleSignIn.startAnimation(animation);
                 animation.setAnimationListener(new Animation.AnimationListener() {
                     @Override
-                    public void onAnimationStart(Animation animation) {}
+                    public void onAnimationStart(Animation animation) {
+                    }
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
@@ -111,7 +115,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
 
                     @Override
-                    public void onAnimationRepeat(Animation animation) {}
+                    public void onAnimationRepeat(Animation animation) {
+                    }
                 });
             }
         });
@@ -123,7 +128,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 facebookSignIn.startAnimation(animation);
                 animation.setAnimationListener(new Animation.AnimationListener() {
                     @Override
-                    public void onAnimationStart(Animation animation) {}
+                    public void onAnimationStart(Animation animation) {
+                    }
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
@@ -131,7 +137,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
 
                     @Override
-                    public void onAnimationRepeat(Animation animation) {}
+                    public void onAnimationRepeat(Animation animation) {
+                    }
                 });
             }
         });
@@ -139,7 +146,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                helper.gotoSignUpActivity(getApplicationContext());
+                startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
+                finish();
             }
         });
 
@@ -180,6 +188,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         startActivityForResult(googleSignInIntent, RC_SIGN_IN);
 
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -201,7 +210,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            Log.w("Google Sign In error", "signInResult:failed code="+ e.getStatusCode());
+            Log.w("Google Sign In error", "signInResult:failed code=" + e.getStatusCode());
             Toast.makeText(LoginActivity.this, "FAILED", Toast.LENGTH_SHORT).show();
         }
     }
@@ -216,49 +225,50 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //            super.onStart();
 
 
-    private void checkNetwork(){
-        if (isNetWorkAvailable()){
+    private void checkNetwork() {
+        if (isNetWorkAvailable()) {
             mAuth.signInWithEmailAndPassword(Email, Password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         Log.d("login", "signInWithEmail:success");
                         FirebaseUser user = mAuth.getCurrentUser();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    }else {
+                    } else {
                         Log.w("sign in", "signInWithEmail:failure", task.getException());
                         Toast.makeText(LoginActivity.this, getString(R.string.authFailed), Toast.LENGTH_LONG).show();
                     }
 
                 }
             });
-        }else {
+        } else {
             Toast.makeText(getApplicationContext(), getString(R.string.netError), Toast.LENGTH_LONG).show();
         }
     }
-    private boolean isNetWorkAvailable(){
+
+    private boolean isNetWorkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
+
     @Override
     public void onStart() {
         super.onStart();
         user = FirebaseAuth.getInstance().getCurrentUser();
-        if(user != null){
-            helper.toastMessage(this, getString(R.string.userId)+ user.getUid());
+        if (user != null) {
+            helper.toastMessage(this, getString(R.string.userId) + user.getUid());
             helper.gotoMainActivity(this);
         }
 
         // Check for existing Google Sign In account, if the user is already signed in
         // the GoogleSignInAccount will be non-null.
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        if (account != null){
-            startActivity(new Intent (LoginActivity.this, MainActivity.class));
+        if (account != null) {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
         }
         super.onStart();
-
     }
 
 
