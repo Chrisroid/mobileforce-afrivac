@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
-
-    <color name="colorWhite">#FFFFFF</color>
-    <color name="colorGrey">#323131</color>
-    <color name="colorLightGrey">#535051</color>
-    <color name="colorBlack">#FF000000</color>
-    <color name="colorBlue">#3913B8</color>
-
-    <color name="stroke">#C4C4C4</color>
-    <color name="roundBtn">#3913B8</color>
-    <color name="roundBtn2">#4D3913B8</color>
-    <color name="black">#000</color>
-    <color name="white">#FFF</color>
+    <color name="purple_200">#448FDF</color>
+    <color name="purple_500">#4067F1</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blue">#4F74E6</color>
 </resources>
