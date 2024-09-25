@@ -62,6 +62,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         forgotPassword = findViewById(R.id.signin_forgot_password);
 
 
+        helper = new Helper();
+
         final String Email = email.getText().toString().trim();
         final String Password = password.getText().toString().trim();
 
