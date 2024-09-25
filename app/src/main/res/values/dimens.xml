@@ -26,4 +26,5 @@
     <dimen name="dimension_41dp">41dp</dimen>
     <dimen name="dimension_67dp">67dp</dimen>
     <dimen name="dimension_48sp">48sp</dimen>
+    <dimen name="dimension_55dp">55dp</dimen>
 </resources>

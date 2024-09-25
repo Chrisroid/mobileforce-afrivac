@@ -136,8 +136,8 @@
     <string name="_4_1" translatable="false">4.1</string>
     <string name="_2_731" translatable="false">(2,731)</string>
     <string name="confirmPassword">Confirm Password</string>
-    <string name="readAndAgreed">I have read and agreed to</string>
-    <string name="terms_and_agreement">Terms and agreement</string>
+    <string name="readAndAgreed">I have read and agreed to </string>
+    <string name="terms_and_agreement"> I have read and agreed to Terms and agreement</string>
     <string name="existingAccount">Already have an account?</string>
     <string name="enter_your_message">Enter your message</string>
     <string name="contact_us">Contact us</string>
@@ -170,4 +170,8 @@
     <string name="near_me">Find Hotels Near Me</string>
     <string name="name1">BW StarFire </string>
     <string name="name2">Victoria island, Lagos</string>
+    <string name="confirmpassword">Confirm Password</string>
+    <string name="signUpGoogle">Sign up with Google</string>
+    <string name="signUpFacebook">Sign up with Facebook</string>
+    <string name="alreadyHaveAccount">Already have an account?</string>
 </resources>
